@@ -1,0 +1,50 @@
+﻿@model Telefono
+@{
+    List<Telefono> listTel = ViewData["list"] as List<Telefono>;
+    int pId = (int)ViewData["perId"];
+}
+
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Numeros telefónicos</h4>    
+  </div>
+    <div class="card-body"> @if (listTel != null)
+        {
+            <table>
+                <tr class="h4">
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(listTel => listTel.TelefonoNumero)
+                    </td>
+                </tr>
+                @foreach (var item in listTel)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(listTel => item.TelefonoNumero)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Agregar número telefónico</h4>
+  </div>
+    <div class="col-md-4">
+        <form asp-action="Agregar">        
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="PersonaId" value="@pId"/>
+                <div class="form-group">
+                <label asp-for="TelefonoNumero" class="control-label"></label>
+                <input asp-for="TelefonoNumero" class="form-control" />
+                <span asp-validation-for="TelefonoNumero" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary mt-3 mb-3" />
+            </div>
+        </form>
+    </div>
+</div>
+

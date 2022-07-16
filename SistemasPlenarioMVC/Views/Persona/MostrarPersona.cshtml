@@ -1,0 +1,61 @@
+﻿@model Persona
+
+<h1>Sistemas Plenario</h1>
+
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Datos de persona</h4>    
+  </div>
+<div class="card-body"> @if (Model != null)
+        {
+            <table>
+                <tr class="h4">
+                    <td class = "col-sm-3">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </td>
+                    <td class = "col-sm-3">
+                        @Html.DisplayNameFor(model => model.FechaNacimiento)
+                    </td>
+                    <td class = "col-sm-3">
+                        @Html.DisplayNameFor(model => model.CreditoMaximo)
+                    </td>
+                </tr>                
+                <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.FechaNacimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreditoMaximo)
+                        </td>
+                </tr>
+                
+            </table>
+        }
+</div>
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Numeros telefónicos</h4>    
+  </div>
+    <div class="card-body"> 
+            <table>
+                <tr class="h4">
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(model => model.Telefonos)
+                    </td>
+                </tr>
+                @foreach (var item in Model.Telefonos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(listTel => item.TelefonoNumero)
+                        </td>
+                    </tr>
+                }
+            </table>
+        
+    </div>
+</div>
+

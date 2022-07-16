@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Persona>
+
+    <h1>Sistemas Plenario</h1>
+    <div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Agenda</h4>    
+    <form asp-action="Buscar">
+    <div class="form-group">
+        <input type="text" name="nombre" required>   
+        <input type="submit" value="Buscar" class="btn btn-success" />
+    </div>
+    </form>
+    <div>
+    <a  asp-action="Agregar" class="btn btn-primary m-3">Agregar</a>
+    </div>
+  </div>
+    <div class="card-body"> @if (Model != null)
+        {
+            <table>
+                <tr class="h4">
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </td>
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(model => model.FechaNacimiento)
+                    </td>
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(model => model.CreditoMaximo)
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FechaNacimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.CreditoMaximo)
+                        </td>
+                        <td>
+                            <a asp-action="Borrar" asp-route-id="@item.PersonaId" class="m-2">Eliminar</a>
+                        </td>
+                        <td>
+                            <a asp-action="Agregar" asp-route-id="@item.PersonaId" class="m-2">Modificar</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Telefono" asp-action="Index" asp-route-id="@item.PersonaId" class="m-2">Telefonos</a>
+                        </td>
+                    </tr>
+                }
+                </table>
+        }
+    </div>
+    </div>

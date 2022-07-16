@@ -1,0 +1,22 @@
+﻿@model Telefono
+
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Modificar número telefónico</h4>
+  </div>
+    <div class="col-md-4">
+        <form asp-action="Modificar">        
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="PersonaId" value="@Model.PersonaId"/>
+                    <input type="hidden" asp-for="TelefonoId" value="@Model.TelefonoId"/>
+                <div class="form-group">
+                <label asp-for="TelefonoNumero" class="control-label"></label>
+                <input asp-for="TelefonoNumero" class="form-control" placeholder="@Model.PersonaId"/>
+                <span asp-validation-for="TelefonoNumero" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary mt-3 mb-3" />
+            </div>
+        </form>
+    </div>
+</div>

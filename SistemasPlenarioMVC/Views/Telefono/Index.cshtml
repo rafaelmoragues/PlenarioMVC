@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Telefono>
+@{
+    int pId = (int)ViewData["perId"];
+    string nom = ViewData["nombre"].ToString();
+}
+
+<h1>Sistemas Plenario</h1>
+<div class="card">
+  <div class="card-header d-flex align-items-baseline">
+    <i class="fa fa-notes-medical "></i><h4 class=" ms-3 m-3">Numeros telefónicos de: @nom</h4>    
+    <div>
+    <a  asp-action="Agregar" asp-route-id="@pId"class=" btn btn-primary m-3">Agregar</a>
+    </div>
+  </div>
+  <div class="card-body"> @if (Model != null)
+        {
+            <table>
+                <tr class="h4">
+                    <td class = "col-sm-4">
+                        @Html.DisplayNameFor(model => model.TelefonoNumero)
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.TelefonoNumero)
+                        </td>                        
+                        <td>
+                            <a asp-action="Borrar" asp-route-id="@item.TelefonoId" class="m-2">Eliminar</a>
+                        </td>
+                        <td>
+                            <a asp-action="Modificar" asp-route-id="@item.TelefonoId" class="m-2">Modificar</a>
+                        </td>
+                    </tr>
+                }
+                </table>
+        }
+  </div>
+</div>
